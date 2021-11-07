@@ -3,9 +3,9 @@ package ru.sber.orm.entities
 import javax.persistence.*
 
 @Entity
-class Aircraft (
+data class Aircraft (
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = 0,
 
     var flight: Int,

@@ -1,6 +1,8 @@
 package ru.sber.orm
 
 import org.hibernate.cfg.Configuration
+import ru.sber.orm.dao.AircraftDao
+import ru.sber.orm.dao.ModelDao
 import ru.sber.orm.dao.PilotsDao
 import ru.sber.orm.entities.Aircraft
 import ru.sber.orm.entities.Model
@@ -17,30 +19,44 @@ fun main(args: Array<String>) {
     sessionFactory.use {
 
         val pilotsDao = PilotsDao(sessionFactory)
+        val modelDao = ModelDao(sessionFactory)
+        val aircraftDao = AircraftDao(sessionFactory)
 
         val modelA320 = Model(name = "Airbus A320")
         val modelBoeing737 = Model(name = "Boeing 737")
 
+        modelDao.save(modelA320)
+        modelDao.save(modelBoeing737)
+
+        val aircraft101 = Aircraft(model = modelA320, flight = 101)
+        val aircraft102 = Aircraft(model = modelA320, flight = 102)
+        val aircraft201 = Aircraft(model = modelBoeing737, flight = 201)
+        val aircraft202 = Aircraft(model = modelBoeing737, flight = 202)
+
+        aircraftDao.save(aircraft101)
+        aircraftDao.save(aircraft102)
+        aircraftDao.save(aircraft201)
+        aircraftDao.save(aircraft202)
+
         val pilot1 = Pilot(
             name = "Bob",
             plains = mutableListOf(
-                Aircraft(model = modelA320, flight = 101),
-                Aircraft(model = modelA320, flight = 102),
-                Aircraft(model = modelBoeing737, flight = 201),
-                Aircraft(model = modelBoeing737, flight = 202),
+                aircraft101,
+                aircraft102,
+                aircraft201,
+                aircraft202
             )
         )
-
-        pilotsDao.save(pilot1)
 
         val pilot2 = Pilot(
             name = "Bill",
             plains = mutableListOf(
-                Aircraft(model = modelA320, flight = 103),
-                Aircraft(model = modelBoeing737, flight = 203)
+                aircraft201,
+                aircraft202
             )
         )
 
+        pilotsDao.save(pilot1)
         pilotsDao.save(pilot2)
 
         val found1 = pilotsDao.find(pilot1.id)

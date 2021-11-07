@@ -1,15 +1,17 @@
 package ru.sber.orm.entities
 
+import org.hibernate.annotations.NaturalId
 import javax.persistence.*
 
 @Entity
-class Pilot(
+data class Pilot(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = 0,
 
+    @NaturalId
     var name: String,
 
-    @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     var plains: MutableList<Aircraft> = ArrayList()
 )

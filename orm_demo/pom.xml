@@ -39,9 +39,9 @@
                 </executions>
                 <configuration>
                     <compilerPlugins>
-                        <plugin>no-arg</plugin>
                         <plugin>jpa</plugin>
                         <plugin>all-open</plugin>
+                        <plugin>no-arg</plugin>
                     </compilerPlugins>
                     <pluginOptions>
                         <option>all-open:annotation=javax.persistence.Entity</option>
@@ -78,7 +78,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.3.0</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

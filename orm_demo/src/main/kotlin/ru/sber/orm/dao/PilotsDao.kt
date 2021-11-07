@@ -41,7 +41,7 @@ class PilotsDao(private val sessionFactory: SessionFactory) {
         val result: List<Pilot>
         sessionFactory.openSession().use { session ->
             session.beginTransaction()
-            result = session.createQuery("select * from pilot")
+            result = session.createQuery("from Pilot")
                 .list() as List<Pilot>
         }
         return result

@@ -1,5 +1,6 @@
 package ru.sber.orm.entities
 
+import org.hibernate.annotations.NaturalId
 import javax.persistence.*
 
 @Entity

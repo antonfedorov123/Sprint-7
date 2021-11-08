@@ -13,6 +13,6 @@ class Pilot(
     @NaturalId
     var name: String,
 
-    @ManyToMany(cascade = [CascadeType.PERSIST], fetch = FetchType.EAGER)
-    var plains: MutableList<Aircraft> = ArrayList()
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    var aircraft: MutableList<Aircraft>
 )

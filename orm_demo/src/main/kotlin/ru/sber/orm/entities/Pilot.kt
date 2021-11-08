@@ -13,5 +13,5 @@ data class Pilot(
     var name: String,
 
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-    var plains: MutableList<Aircraft> = ArrayList()
+    var aircraft: MutableList<Aircraft> = ArrayList()
 )

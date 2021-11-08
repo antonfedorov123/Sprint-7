@@ -40,7 +40,7 @@ fun main(args: Array<String>) {
 
         val pilot1 = Pilot(
             name = "Bob",
-            plains = mutableListOf(
+            aircraft = mutableListOf(
                 aircraft101,
                 aircraft102,
                 aircraft201,
@@ -50,7 +50,7 @@ fun main(args: Array<String>) {
 
         val pilot2 = Pilot(
             name = "Bill",
-            plains = mutableListOf(
+            aircraft = mutableListOf(
                 aircraft201,
                 aircraft202
             )

@@ -11,6 +11,6 @@ class Aircraft (
 
     var flight: Int,
 
-    @OneToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @ManyToOne
     var model: Model
 )

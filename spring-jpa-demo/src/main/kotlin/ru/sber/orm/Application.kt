@@ -19,18 +19,13 @@ class Application(
 
     override fun run(vararg args: String?) {
 
-        val modelA320 = Model(name = "Airbus A320")
-        val modelBoeing737 = Model(name = "Boeing 737")
+        val modelA320 = modelRepositories.save(Model(name = "Airbus A320"))
+        val modelBoeing737 = modelRepositories.save(Model(name = "Boeing 737"))
 
-        modelRepositories.save(modelA320)
-        modelRepositories.save(modelBoeing737)
-
-        val aircraft101 = Aircraft(model = modelA320, flight = 101)
-        val aircraft102 = Aircraft(model = modelA320, flight = 102)
-        val aircraft201 = Aircraft(model = modelBoeing737, flight = 201)
-        val aircraft202 = Aircraft(model = modelBoeing737, flight = 202)
-
-        aircraftRepositories.saveAll(listOf(aircraft101, aircraft102, aircraft201, aircraft202))
+        val aircraft101 = aircraftRepositories.save(Aircraft(model = modelA320, flight = 101))
+        val aircraft102 = aircraftRepositories.save(Aircraft(model = modelA320, flight = 102))
+        val aircraft201 = aircraftRepositories.save(Aircraft(model = modelBoeing737, flight = 201))
+        val aircraft202 = aircraftRepositories.save(Aircraft(model = modelBoeing737, flight = 202))
 
         val pilot1 = Pilot(
             name = "Bob",

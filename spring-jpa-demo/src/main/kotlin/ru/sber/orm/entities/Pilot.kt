@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name="pilot")
-class Pilot(
+data class Pilot(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = 0,
@@ -13,6 +13,6 @@ class Pilot(
     @NaturalId
     var name: String,
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     var aircraft: MutableList<Aircraft>
 )

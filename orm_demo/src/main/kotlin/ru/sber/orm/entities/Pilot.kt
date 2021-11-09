@@ -12,6 +12,6 @@ data class Pilot(
     @NaturalId
     var name: String,
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     var aircraft: MutableList<Aircraft> = ArrayList()
 )

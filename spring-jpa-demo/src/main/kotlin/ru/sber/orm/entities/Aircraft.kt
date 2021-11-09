@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name="aircraft")
-class Aircraft (
+data class Aircraft (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = 0,

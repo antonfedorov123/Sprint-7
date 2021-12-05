@@ -18,7 +18,6 @@ fun main() {
         "postgres"
     )
     connection.use { conn ->
-        val autoCommit = conn.autoCommit
         try {
             conn.autoCommit = false
             val prepareStatement1 = conn.prepareStatement("select * from account1 where id = 1")
@@ -42,7 +41,7 @@ fun main() {
             exception.printStackTrace()
             conn.rollback()
         } finally {
-            conn.autoCommit = autoCommit
+            conn.autoCommit = true
         }
     }
 }
